@@ -1,7 +1,4 @@
-all: estado.cgi modulos.cgi aws.cgi
-
-aws.cgi: aws.c
-	gcc -o aws.cgi aws.c
+all: estado.cgi modulos.cgi
 
 estado.cgi: estado.c
 	gcc -o estado.cgi estado.c
@@ -10,4 +7,4 @@ modulos.cgi: modulos.c
 	gcc -o modulos.cgi modulos.c
 
 clean:
-	rm  estado.cgi modulos.cgi aws.cgi
+	rm  estado.cgi modulos.cgi
