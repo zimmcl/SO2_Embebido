@@ -12,7 +12,7 @@ $CGI::POST_MAX = 8192;
 my $safe_filename_characters = "a-zA-Z0-9_.-";
 my $upload_dir = "/var/www/html/TP3/upload";
 
-my $query = new CGI;
+my $query = new CGI();
 my $filename = $query->param("modulo");
 my $password = $query->param("pass");
 
@@ -53,27 +53,26 @@ $filename =~ s/[^$safe_filename_characters]//g;
 
 if ( $filename =~ /^([$safe_filename_characters]+)$/ )
 {
-$filename = $1;
+	$filename = $1;
 }
 else
 {
-die "El archivo contiene caracteres invalidos";
+	die "El archivo contiene caracteres invalidos";
 }
 
 my $upload_filehandle = $query->upload("modulo");
 
 open ( UPLOADFILE, ">$upload_dir/$filename" ) or die "$!";
-binmode UPLOADFILE;
+binmode (UPLOADFILE);
 while ( <$upload_filehandle> )
 {
-print UPLOADFILE;
+	chomp();
+	print UPLOADFILE;
 }
 close UPLOADFILE;
 
 my @campos = split /\./,$filename;
-system("cd $upload_dir/ && make> /dev/null 2>&1 ");
 `sudo insmod $upload_dir/./$campos[0].ko &> /dev/null`;	
-system("cd $upload_dir/ && make clean> /dev/null 2>&1");
 exec("/var/www/html/TP3/cgi-bin/modulos.cgi");
 
 
