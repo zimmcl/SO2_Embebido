@@ -1,5 +1,10 @@
 #!/usr/bin/perl -w
 
+/**
+* Lista las opciones para la busqueda de datos en el servidor AWS.
+* Permite selecionar Producto, Canal y fecha(year/day)
+*/
+
 use strict;
 use CGI;
 use CGI::Carp qw ( fatalsToBrowser );

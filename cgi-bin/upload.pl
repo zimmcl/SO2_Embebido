@@ -1,5 +1,11 @@
 #!/usr/bin/perl -wl
 #`
+/**
+* Instala el módulo pasado como argumento desde modulos.cgi
+* Realiza la validacion de las credenciales para realizar la tarea.
+* Despues de realizar la instalación, vuelve a ejecutar modulo.cgi para listar
+* los módulos actualmente instalados.
+*/
 
 use strict;
 use CGI;
